@@ -1,3 +1,4 @@
+import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AppNavigationStateContextHooks } from 'modules/app/ui/contexts/AppNavigationState';
