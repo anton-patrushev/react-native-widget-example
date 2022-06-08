@@ -12,15 +12,22 @@ export const SignInScreen: React.FC<ISignInScreenProps> = () => {
   return (
     <View style={styles.screen}>
       <Text style={styles.welcome}>Welcome</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={changePassword}
-        value={password}
-      />
+
+      <Text style={styles.inputLabel}>username</Text>
       <TextInput
         style={styles.input}
         onChangeText={changeLogin}
         value={login}
+        textContentType="username"
+      />
+
+      <Text style={styles.inputLabel}>password</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={changePassword}
+        value={password}
+        textContentType="password"
+        secureTextEntry
       />
       <Button title="Sign In" onPress={submit} />
     </View>
