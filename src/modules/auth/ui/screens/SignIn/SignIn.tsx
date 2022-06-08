@@ -6,7 +6,7 @@ import { useSignIn } from './signIn.hooks';
 
 interface ISignInScreenProps {}
 
-const SignInScreen = (_props: ISignInScreenProps) => {
+export const SignInScreen: React.FC<ISignInScreenProps> = () => {
   const { login, password, changeLogin, changePassword, submit } = useSignIn();
 
   return (
@@ -26,5 +26,3 @@ const SignInScreen = (_props: ISignInScreenProps) => {
     </View>
   );
 };
-
-export default SignInScreen;
