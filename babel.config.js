@@ -8,5 +8,6 @@ module.exports = {
         extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
       },
     ],
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
   ],
 };

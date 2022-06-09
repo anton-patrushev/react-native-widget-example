@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Button, Text, TextInput, View } from 'react-native';
 
 import styles from './signIn.styles';
 import { useSignIn } from './signIn.hooks';
@@ -7,7 +7,8 @@ import { useSignIn } from './signIn.hooks';
 interface ISignInScreenProps {}
 
 export const SignInScreen: React.FC<ISignInScreenProps> = () => {
-  const { login, password, changeLogin, changePassword, submit } = useSignIn();
+  const { loading, login, password, changeLogin, changePassword, submit } =
+    useSignIn();
 
   return (
     <View style={styles.screen}>
@@ -29,7 +30,11 @@ export const SignInScreen: React.FC<ISignInScreenProps> = () => {
         textContentType="password"
         secureTextEntry
       />
-      <Button title="Sign In" onPress={submit} />
+      {loading ? (
+        <ActivityIndicator />
+      ) : (
+        <Button title="Sign In" onPress={submit} />
+      )}
     </View>
   );
 };
