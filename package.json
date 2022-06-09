@@ -19,6 +19,7 @@
     "react-native": "0.68.2",
     "react-native-safe-area-context": "^4.3.1",
     "react-native-screens": "^3.13.1",
+    "react-native-sensitive-info": "^6.0.0-alpha.9",
     "reflect-metadata": "^0.1.13",
     "yarn": "^1.22.19"
   },
