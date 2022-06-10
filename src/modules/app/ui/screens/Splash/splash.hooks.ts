@@ -23,14 +23,13 @@ export function useSplash(): UseSplashResult {
       .execute()
       .then(() => {
         setTimeout(() => {
-          navigation.push(AppRouterScreens.MAIN);
           signIn();
         }, 1000);
       })
       .catch(() => {
         setTimeout(() => {
-          navigation.push(AppRouterScreens.SIGN_IN);
           signOut();
+          navigation.replace(AppRouterScreens.SIGN_IN);
         }, 1000);
       });
   });

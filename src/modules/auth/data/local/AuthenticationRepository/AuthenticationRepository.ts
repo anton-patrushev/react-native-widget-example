@@ -66,6 +66,17 @@ export class AuthenticationRepository implements IAuthenticationRepository {
   };
 
   revokeAuthentication = async (): Promise<void> => {
-    // return Promise.resolve(undefined);
+    try {
+      await Promise.allSettled([
+        SInfo.deleteItem(this.usernameKey, {
+          keychainService: this.keychainService,
+        }),
+        SInfo.deleteItem(this.passwordKey, {
+          keychainService: this.keychainService,
+        }),
+      ]);
+    } catch {
+      throw new Error('Something went wrong');
+    }
   };
 }
