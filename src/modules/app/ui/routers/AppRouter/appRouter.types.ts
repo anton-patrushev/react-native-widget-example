@@ -12,3 +12,8 @@ export type SplashScreenNavigationProp = NativeStackNavigationProp<
   AppRouterParamsList,
   AppRouterScreens.SPLASH
 >;
+
+export type SignInScreenNavigationProp = NativeStackNavigationProp<
+  AppRouterParamsList,
+  AppRouterScreens.SIGN_IN
+>;

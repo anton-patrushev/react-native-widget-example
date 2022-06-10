@@ -4,6 +4,9 @@ import { useInjection } from 'modules/shared/ioc/context/useInjection';
 import { ILoginUseCase } from 'modules/auth/domain/useCases/LoginUseCase/ILoginUseCase';
 import { AuthModuleSymbols } from 'modules/auth/ioc/symbols';
 import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { SignInScreenNavigationProp } from 'modules/app/ui/routers/AppRouter/appRouter.types';
+import { AppRouterScreens } from 'modules/app/ui/routers/AppRouter/appRouter.screens';
 
 type UseSignInResult = {
   loading: boolean;
@@ -16,6 +19,8 @@ type UseSignInResult = {
 };
 
 export function useSignIn(): UseSignInResult {
+  const navigation = useNavigation<SignInScreenNavigationProp>();
+
   const [login, setLogin] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = React.useState(false);
@@ -31,6 +36,7 @@ export function useSignIn(): UseSignInResult {
     setLoading(true);
     try {
       await loginUseCase.execute({ username: login, password });
+      navigation.replace(AppRouterScreens.MAIN);
     } catch (e) {
       if (e instanceof Error) {
         Alert.alert('Authentication failed', e.message);

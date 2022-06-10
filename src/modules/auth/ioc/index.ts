@@ -4,11 +4,19 @@ import { ILoginUseCase } from 'modules/auth/domain/useCases/LoginUseCase/ILoginU
 import { LoginUseCase } from 'modules/auth/domain/useCases/LoginUseCase/LoginUseCase';
 import { IAuthenticationRepository } from 'modules/auth/data/local/AuthenticationRepository/IAuthenticationRepository';
 import { AuthenticationRepository } from 'modules/auth/data/local/AuthenticationRepository/AuthenticationRepository';
+import { IGetIsAuthenticatedUseCase } from 'modules/auth/domain/useCases/GetIsAuthenticatedUseCase/IGetIsAuthenticatedUseCase';
+import { GetIsAuthenticatedUseCase } from 'modules/auth/domain/useCases/GetIsAuthenticatedUseCase/GetIsAuthenticatedUseCase';
 
 import { AuthModuleSymbols } from './symbols';
 
 export const AuthModule: DIModule = {
   init: (container) => {
+    container
+      .bind<IGetIsAuthenticatedUseCase>(
+        AuthModuleSymbols.GET_IS_AUTHENTICATED_USE_CASE,
+      )
+      .to(GetIsAuthenticatedUseCase)
+      .inTransientScope();
     container
       .bind<ILoginUseCase>(AuthModuleSymbols.LOGIN_USE_CASE)
       .to(LoginUseCase)

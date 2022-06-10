@@ -40,6 +40,14 @@ export class AuthenticationRepository implements IAuthenticationRepository {
     }
   };
 
+  isAuthenticated = async (): Promise<boolean> => {
+    const storedUsername = await SInfo.getItem(this.usernameKey, {
+      keychainService: this.keychainService,
+    });
+
+    return Boolean(storedUsername);
+  };
+
   authenticate = async (username: string, password: string): Promise<void> => {
     const [storedUsername, storedPassword] =
       await this.getCurrentlyStoredAuthenticationData();
