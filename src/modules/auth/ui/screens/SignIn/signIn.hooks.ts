@@ -3,6 +3,7 @@ import React from 'react';
 import { useInjection } from 'modules/shared/ioc/context/useInjection';
 import { ILoginUseCase } from 'modules/auth/domain/useCases/LoginUseCase/ILoginUseCase';
 import { AuthModuleSymbols } from 'modules/auth/ioc/symbols';
+import { Alert } from 'react-native';
 
 type UseSignInResult = {
   loading: boolean;
@@ -11,6 +12,7 @@ type UseSignInResult = {
   password: string;
   changePassword(input: string): void;
   submit(): void;
+  isSubmitEnabled: boolean;
 };
 
 export function useSignIn(): UseSignInResult {
@@ -29,6 +31,10 @@ export function useSignIn(): UseSignInResult {
     setLoading(true);
     try {
       await loginUseCase.execute({ username: login, password });
+    } catch (e) {
+      if (e instanceof Error) {
+        Alert.alert('Authentication failed', e.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -41,5 +47,6 @@ export function useSignIn(): UseSignInResult {
     changeLogin,
     changePassword,
     submit,
+    isSubmitEnabled: Boolean(login.length) && Boolean(password.length),
   };
 }

@@ -7,8 +7,15 @@ import { useSignIn } from './signIn.hooks';
 interface ISignInScreenProps {}
 
 export const SignInScreen: React.FC<ISignInScreenProps> = () => {
-  const { loading, login, password, changeLogin, changePassword, submit } =
-    useSignIn();
+  const {
+    loading,
+    login,
+    password,
+    isSubmitEnabled,
+    changeLogin,
+    changePassword,
+    submit,
+  } = useSignIn();
 
   return (
     <View style={styles.screen}>
@@ -20,6 +27,7 @@ export const SignInScreen: React.FC<ISignInScreenProps> = () => {
         onChangeText={changeLogin}
         value={login}
         textContentType="username"
+        autoCapitalize="none"
       />
 
       <Text style={styles.inputLabel}>password</Text>
@@ -33,7 +41,7 @@ export const SignInScreen: React.FC<ISignInScreenProps> = () => {
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Button title="Sign In" onPress={submit} />
+        <Button title="Sign In" onPress={submit} disabled={!isSubmitEnabled} />
       )}
     </View>
   );
