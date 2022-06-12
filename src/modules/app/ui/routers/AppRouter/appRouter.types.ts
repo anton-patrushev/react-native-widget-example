@@ -17,3 +17,8 @@ export type SignInScreenNavigationProp = NativeStackNavigationProp<
   AppRouterParamsList,
   AppRouterScreens.SIGN_IN
 >;
+
+export type MainRouterNavigationProp = NativeStackNavigationProp<
+  AppRouterParamsList,
+  AppRouterScreens.MAIN
+>;

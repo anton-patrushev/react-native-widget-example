@@ -6,6 +6,8 @@ import { SignInScreen } from 'modules/auth/ui/screens/SignIn/SignIn';
 import { SplashScreen } from 'modules/app/ui/screens/Splash/Splash';
 import { MainRouter } from 'modules/app/ui/routers/MainRouter/MainRouter';
 
+import { EmptyComponent } from 'modules/shared/ui/components/EmptyComponent/EmptyComponent';
+
 import { AppRouterParamsList } from './appRouter.types';
 import { AppRouterScreens } from './appRouter.screens';
 
@@ -15,7 +17,9 @@ export const AppRouter = () => {
   const isAuthenticated = AppNavigationStateContextHooks.useIsAuthenticated();
 
   return (
-    <AppRouterStack.Navigator initialRouteName={AppRouterScreens.SPLASH}>
+    <AppRouterStack.Navigator
+      initialRouteName={AppRouterScreens.SPLASH}
+      screenOptions={{ header: EmptyComponent }}>
       {isAuthenticated ? (
         <>
           <AppRouterStack.Screen

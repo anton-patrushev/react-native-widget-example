@@ -1,12 +1,10 @@
 import React from 'react';
+import { Alert } from 'react-native';
 
+import { AppNavigationStateContextHooks } from 'modules/app/ui/contexts/AppNavigationState';
 import { useInjection } from 'modules/shared/ioc/context/useInjection';
 import { ILoginUseCase } from 'modules/auth/domain/useCases/LoginUseCase/ILoginUseCase';
 import { AuthModuleSymbols } from 'modules/auth/ioc/symbols';
-import { Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { SignInScreenNavigationProp } from 'modules/app/ui/routers/AppRouter/appRouter.types';
-import { AppRouterScreens } from 'modules/app/ui/routers/AppRouter/appRouter.screens';
 
 type UseSignInResult = {
   loading: boolean;
@@ -19,7 +17,7 @@ type UseSignInResult = {
 };
 
 export function useSignIn(): UseSignInResult {
-  const navigation = useNavigation<SignInScreenNavigationProp>();
+  const signIn = AppNavigationStateContextHooks.useSignIn();
 
   const [login, setLogin] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -36,7 +34,7 @@ export function useSignIn(): UseSignInResult {
     setLoading(true);
     try {
       await loginUseCase.execute({ username: login, password });
-      navigation.replace(AppRouterScreens.MAIN);
+      setTimeout(signIn, 500); // to avoid async update while unmounting component
     } catch (e) {
       if (e instanceof Error) {
         Alert.alert('Authentication failed', e.message);
