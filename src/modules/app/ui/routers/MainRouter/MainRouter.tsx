@@ -9,6 +9,7 @@ import { HeaderRight } from './components/HeaderRight/HeaderRight';
 
 import { MainRouterParamsList } from './mainRouter.types';
 import { MainRouterScreens } from './mainRouter.screens';
+import { EmptyComponent } from 'modules/shared/ui/components/EmptyComponent/EmptyComponent';
 
 const MainRouterStack = createNativeStackNavigator<MainRouterParamsList>();
 export const MainRouter = () => {
@@ -26,6 +27,11 @@ export const MainRouter = () => {
       <MainRouterStack.Screen
         name={MainRouterScreens.SHARED}
         component={SharedRouter}
+        options={{
+          animation: 'slide_from_bottom',
+          presentation: 'modal',
+          header: EmptyComponent,
+        }}
       />
     </MainRouterStack.Navigator>
   );

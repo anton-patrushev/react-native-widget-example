@@ -14,7 +14,6 @@ export const SharedRouter = () => {
       <SharedRouterStack.Screen
         name={SharedRouterScreens.CREATE_EVENT}
         component={CreateEventScreen}
-        options={{ presentation: 'fullScreenModal', animation: 'flip' }}
       />
     </SharedRouterStack.Navigator>
   );
