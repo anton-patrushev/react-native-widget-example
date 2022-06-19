@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from 'modules/shared/domain/colors/Colors';
+import { Colors } from 'modules/shared/presentation/colors/Colors';
 
 const HEADER_RIGHT_SIZE = 36;
 
