@@ -8,3 +8,8 @@ export type SharedRouterParamsList = {
 
 export type SharedRouterNavigationProp =
   NativeStackNavigationProp<SharedRouterParamsList>;
+
+export type CreateEventNavigationProp = NativeStackNavigationProp<
+  SharedRouterParamsList,
+  SharedRouterScreens.CREATE_EVENT
+>;
