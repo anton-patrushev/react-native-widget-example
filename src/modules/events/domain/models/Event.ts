@@ -4,7 +4,7 @@ export class Event {
     public title: string,
     public description: string | null,
     public color: string,
-    public startTime: Date,
-    public endTime: Date,
+    public startTimestamp: number,
+    public endTimestamp: number,
   ) {}
 }
