@@ -1673,6 +1673,11 @@
     "@typescript-eslint/types" "5.27.1"
     eslint-visitor-keys "^3.3.0"
 
+"@wufe/mapper@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@wufe/mapper/-/mapper-0.5.0.tgz#794d49629197e8b495328e94ae8405d5cfb0d359"
+  integrity sha512-F1oyCHrFS1lxybd9OWwkuT6KkfZK1k6K1zFsGCxxurBa8bhP3dUCnRuBE+SDawOV/jHBcJzlpkYaHnujaUQGlA==
+
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.6.tgz#41b80f2c871d19686216b82309231cfd3cb3d291"
