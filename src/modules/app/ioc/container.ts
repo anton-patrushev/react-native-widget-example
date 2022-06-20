@@ -2,12 +2,14 @@ import { Container } from 'inversify';
 
 import { AuthModule } from 'modules/auth/ioc';
 import { EventsModule } from 'modules/events/ioc';
+import { SharedModule } from 'modules/shared/ioc';
 
 export let container: Container;
 
 export async function initContainer(): Promise<Container> {
   container = new Container();
 
+  SharedModule.init(container);
   AuthModule.init(container);
   EventsModule.init(container);
 

@@ -1,0 +1,13 @@
+import { IMapper } from 'modules/shared/common/mappings/IMapper';
+import { Mapper } from '@wufe/mapper';
+import { eventDomainToEventPresentation } from 'modules/events/presentation/mappings/maps/eventDomainToEventPresentation';
+
+export class PresentationMapper implements IMapper {
+  public mapper: Mapper = new Mapper().withConfiguration((conf) =>
+    conf.shouldIgnoreSourcePropertiesIfNotInDestination(true),
+  );
+
+  public init = () => {
+    eventDomainToEventPresentation(this.mapper);
+  };
+}
