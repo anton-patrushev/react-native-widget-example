@@ -26,7 +26,7 @@ function useCreateEventHeader(createEvent: () => void, loading: boolean) {
           style={styles.submitButton}
           disabled={loading}>
           {loading ? (
-            <ActivityIndicator />
+            <ActivityIndicator color={Colors.WHITE} />
           ) : (
             <Text style={styles.submitButtonLabel}>
               {CreateEventDictionary.SUBMIT_BUTTON_LABEL}

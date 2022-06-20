@@ -1,7 +1,9 @@
-export type CreateEventUseCaseInput = {
-  title: string;
-  description: string;
-  color: string;
-  startTime: Date;
-  endTime: Date;
-};
+export class CreateEventUseCaseInput {
+  constructor(
+    public title: string,
+    public description: string,
+    public color: string,
+    public startTime: Date,
+    public endTime: Date,
+  ) {}
+}

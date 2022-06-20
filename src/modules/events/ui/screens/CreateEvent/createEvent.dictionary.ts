@@ -7,4 +7,6 @@ export const CreateEventDictionary = {
   COLOR_INPUT_LABEL: 'Color',
   START_TIME_INPUT_LABEL: 'Start time',
   END_TIME_INPUT_LABEL: 'End time',
+
+  ERROR_ALERT_TITLE: 'Oops',
 };

@@ -4,6 +4,9 @@ import { Colors } from 'modules/shared/presentation/colors/Colors';
 import { ONE_HOUR_MILLISECONDS } from 'modules/events/ui/screens/CreateEvent/createEvent.consts';
 import { useCreateEventPresenter } from 'modules/events/presentation/presenters/CreateEventPresenter';
 import { CreateEventInput } from 'modules/events/presentation/inputs/CreateEventInput';
+import { useNavigation } from '@react-navigation/native';
+import { CreateEventNavigationProp } from 'modules/app/ui/routers/SharedRouter/sharedRouter.types';
+import { showErrorAlert } from 'modules/events/ui/screens/CreateEvent/createEvent.utils';
 
 type CreateEventForm = {
   title: string;
@@ -64,6 +67,8 @@ export function useCreateEventScreen(): UseCreateEventScreenResult {
   const { form, changeFormField } = useCreateEventForm();
   const [creating, setCreating] = React.useState(false);
 
+  const navigation = useNavigation<CreateEventNavigationProp>();
+
   const createEvent = async () => {
     try {
       setCreating(true);
@@ -77,9 +82,15 @@ export function useCreateEventScreen(): UseCreateEventScreenResult {
           form.endTime,
         ),
       );
-    } catch {
-    } finally {
+
+      navigation.pop();
+    } catch (e) {
+      if (e instanceof Error) {
+        showErrorAlert(e.message);
+      }
+
       setCreating(false);
+    } finally {
     }
   };
 

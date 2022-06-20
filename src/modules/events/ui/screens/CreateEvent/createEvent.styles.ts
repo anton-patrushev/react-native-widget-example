@@ -9,6 +9,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 5,
+    width: 60,
+    height: 30,
   },
   submitButtonLabel: { color: Colors.WHITE, textAlign: 'center' },
   inputContainer: {
