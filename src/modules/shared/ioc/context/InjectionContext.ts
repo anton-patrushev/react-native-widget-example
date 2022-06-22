@@ -1,7 +1,7 @@
 import React from 'react';
-import { container } from 'modules/app/ioc/container';
+import { DIContainer } from 'modules/app/ioc/container';
 
-const injectionContextDefaultValue = container;
+const injectionContextDefaultValue = DIContainer.container;
 
 export type InjectionContextValue = typeof injectionContextDefaultValue;
 
