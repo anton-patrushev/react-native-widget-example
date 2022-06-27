@@ -9,7 +9,6 @@ export const AppModule: DIModule = {
   init: (container: Container): void => {
     container
       .bind<IWatermelonClient>(AppModuleSymbols.WATERMELON_CLIENT)
-      .to(WatermelonClient)
-      .inSingletonScope();
+      .toConstantValue(WatermelonClient.shared);
   },
 };

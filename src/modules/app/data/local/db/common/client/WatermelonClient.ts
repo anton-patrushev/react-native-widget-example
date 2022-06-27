@@ -15,5 +15,20 @@ export class WatermelonClient implements IWatermelonClient {
 
   private initialize = () => {
     this.db = new Database({ adapter: SQLAdapter, modelClasses: appModels });
+
+    if (__DEV__) {
+      this.debug();
+    }
   };
+
+  private debug = () => {
+    const {
+      connectDatabases,
+      WatermelonDB,
+    } = require('react-native-flipper-databases');
+
+    connectDatabases([new WatermelonDB(this.db)]);
+  };
+
+  static shared = new WatermelonClient();
 }
