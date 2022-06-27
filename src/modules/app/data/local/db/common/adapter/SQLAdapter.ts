@@ -1,6 +1,6 @@
 import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
 
-import appSchema from 'modules/app/data/local/db/common/schema/AppSchema';
+import appSchema from 'modules/app/data/local/db/common/schemas/AppSchema';
 import appSchemaMigrations from 'modules/app/data/local/db/common/migrations/AppSchemaMigrations';
 
 export const SQLAdapter = new SQLiteAdapter({
