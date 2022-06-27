@@ -9,10 +9,10 @@ export const SharedModule: DIModule = {
     container
       .bind<IMapper>(SharedModuleSymbols.PRESENTATION_MAPPER)
       .to(PresentationMapper)
-      .inTransientScope();
+      .inSingletonScope();
     container
       .bind<IMapper>(SharedModuleSymbols.DATA_MAPPER)
       .to(DataMapper)
-      .inTransientScope();
+      .inSingletonScope();
   },
 };
