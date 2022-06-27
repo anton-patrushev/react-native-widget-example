@@ -63,7 +63,7 @@ type UseCreateEventScreenResult = {
 };
 
 export function useCreateEventScreen(): UseCreateEventScreenResult {
-  const { createEvent: presenterCreateEvent } = useCreateEventPresenter();
+  const createEventPresenter = useCreateEventPresenter();
   const { form, changeFormField } = useCreateEventForm();
   const [creating, setCreating] = React.useState(false);
 
@@ -73,7 +73,7 @@ export function useCreateEventScreen(): UseCreateEventScreenResult {
     try {
       setCreating(true);
 
-      await presenterCreateEvent(
+      await createEventPresenter.createEvent(
         new CreateEventInput(
           form.title,
           form.description,

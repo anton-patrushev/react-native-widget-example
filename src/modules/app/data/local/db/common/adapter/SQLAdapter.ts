@@ -9,8 +9,9 @@ export const SQLAdapter = new SQLiteAdapter({
   migrations: appSchemaMigrations,
   jsi: true,
   // (optional, but you should implement this method)
-  onSetUpError: () => {
+  onSetUpError: (e) => {
     // TODO: implement error DB setup handling
     // Database failed to load -- offer the user to reload the app or log out
+    console.error('~~~ ON DB SETUP ERROR', e);
   },
 });

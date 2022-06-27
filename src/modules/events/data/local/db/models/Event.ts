@@ -1,13 +1,3 @@
-// export class Event {
-//   constructor(
-//     public title: string,
-//     public description: string | null,
-//     public color: string,
-//     public start_time: number,
-//     public end_time: number,
-//   ) {}
-// }
-
 import { Model } from '@nozbe/watermelondb';
 import { field } from '@nozbe/watermelondb/decorators';
 import {
