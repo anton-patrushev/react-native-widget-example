@@ -1,4 +1,4 @@
-import { ICreateEventPresenter } from 'modules/events/presentation/presenters/ICreateEventPresenter';
+import { ICreateEventPresenter } from 'modules/events/presentation/presenters/CreateEventPresenter/ICreateEventPresenter';
 import { CreateEventInput } from 'modules/events/presentation/inputs/CreateEventInput';
 import { useInjection } from 'modules/shared/ioc/context/useInjection';
 import { ICreateEventUseCase } from 'modules/events/domain/useCases/CreateEventUseCase/ICreateEventUseCase';

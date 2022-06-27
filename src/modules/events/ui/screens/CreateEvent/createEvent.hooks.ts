@@ -2,7 +2,7 @@ import { Color } from 'modules/shared/presentation/types/Color';
 import React from 'react';
 import { Colors } from 'modules/shared/presentation/colors/Colors';
 import { ONE_HOUR_MILLISECONDS } from 'modules/events/ui/screens/CreateEvent/createEvent.consts';
-import { useCreateEventPresenter } from 'modules/events/presentation/presenters/CreateEventPresenter';
+import { useCreateEventPresenter } from 'modules/events/presentation/presenters/CreateEventPresenter/CreateEventPresenter';
 import { CreateEventInput } from 'modules/events/presentation/inputs/CreateEventInput';
 import { useNavigation } from '@react-navigation/native';
 import { CreateEventNavigationProp } from 'modules/app/ui/routers/SharedRouter/sharedRouter.types';
