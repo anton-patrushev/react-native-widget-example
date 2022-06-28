@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { CreateEventScreen } from 'modules/events/ui/screens/CreateEvent/CreateEvent';
+import { SelectDateTime } from 'modules/shared/ui/screens/SelectDateTime/SelectDateTime';
 
 import { SharedRouterParamsList } from './sharedRouter.types';
 import { SharedRouterScreens } from './sharedRouter.screens';
@@ -14,6 +15,10 @@ export const SharedRouter = () => {
       <SharedRouterStack.Screen
         name={SharedRouterScreens.CREATE_EVENT}
         component={CreateEventScreen}
+      />
+      <SharedRouterStack.Screen
+        name={SharedRouterScreens.SELECT_DATE_TIME}
+        component={SelectDateTime}
       />
     </SharedRouterStack.Navigator>
   );
