@@ -6,7 +6,12 @@ import { useCreateEventPresenter } from 'modules/events/presentation/presenters/
 import { CreateEventInput } from 'modules/events/presentation/inputs/CreateEventInput';
 import { useNavigation } from '@react-navigation/native';
 import { CreateEventNavigationProp } from 'modules/app/ui/routers/SharedRouter/sharedRouter.types';
-import { showErrorAlert } from 'modules/events/ui/screens/CreateEvent/createEvent.utils';
+import {
+  addOneHour,
+  isBeforeForMoreThanOneHour,
+  showErrorAlert,
+} from 'modules/events/ui/screens/CreateEvent/createEvent.utils';
+import { SharedRouterScreens } from 'modules/app/ui/routers/SharedRouter/sharedRouter.screens';
 
 type CreateEventForm = {
   title: string;
@@ -60,6 +65,9 @@ type UseCreateEventScreenResult = {
   produceChangeFormField<T extends keyof CreateEventForm>(
     field: T,
   ): (fieldValue: CreateEventForm[T]) => void;
+
+  openStartDateTimePicker(): void;
+  openEndDateTimePicker(): void;
 };
 
 export function useCreateEventScreen(): UseCreateEventScreenResult {
@@ -94,6 +102,27 @@ export function useCreateEventScreen(): UseCreateEventScreenResult {
     }
   };
 
+  const openStartDateTimePicker = () => {
+    navigation.push(SharedRouterScreens.SELECT_DATE_TIME, {
+      initialDate: form.startTime,
+      submitDate: (value) => {
+        changeFormField('startTime', value);
+
+        if (!isBeforeForMoreThanOneHour(value, form.endTime)) {
+          changeFormField('endTime', addOneHour(value));
+        }
+      },
+    });
+  };
+
+  const openEndDateTimePicker = () => {
+    navigation.push(SharedRouterScreens.SELECT_DATE_TIME, {
+      initialDate: form.endTime,
+      submitDate: (value) => changeFormField('endTime', value),
+      minimumDate: addOneHour(form.startTime),
+    });
+  };
+
   return {
     inProgress: creating,
     form,
@@ -101,5 +130,7 @@ export function useCreateEventScreen(): UseCreateEventScreenResult {
     produceChangeFormField: (field) => {
       return (value) => changeFormField(field, value);
     },
+    openStartDateTimePicker,
+    openEndDateTimePicker,
   };
 }

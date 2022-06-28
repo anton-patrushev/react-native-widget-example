@@ -42,10 +42,15 @@ function useCreateEventHeader(createEvent: () => void, loading: boolean) {
 interface ICreateEventScreenProps {}
 
 // TODO: 1) Implement Color picker
-// TODO: 2) Implement Date picker
 export const CreateEventScreen: React.FC<ICreateEventScreenProps> = () => {
-  const { form, produceChangeFormField, inProgress, createEvent } =
-    useCreateEventScreen();
+  const {
+    form,
+    produceChangeFormField,
+    inProgress,
+    createEvent,
+    openStartDateTimePicker,
+    openEndDateTimePicker,
+  } = useCreateEventScreen();
 
   useCreateEventHeader(createEvent, inProgress);
 
@@ -94,7 +99,9 @@ export const CreateEventScreen: React.FC<ICreateEventScreenProps> = () => {
         <Text style={styles.inputLabel}>
           {CreateEventDictionary.START_TIME_INPUT_LABEL}
         </Text>
-        <TouchableOpacity style={styles.datePickerButton}>
+        <TouchableOpacity
+          style={styles.datePickerButton}
+          onPress={openStartDateTimePicker}>
           <Text style={styles.datePickerButtonLabel}>
             {formatEventTime(form.startTime)}
           </Text>
@@ -105,7 +112,9 @@ export const CreateEventScreen: React.FC<ICreateEventScreenProps> = () => {
         <Text style={styles.inputLabel}>
           {CreateEventDictionary.END_TIME_INPUT_LABEL}
         </Text>
-        <TouchableOpacity style={styles.datePickerButton}>
+        <TouchableOpacity
+          style={styles.datePickerButton}
+          onPress={openEndDateTimePicker}>
           <Text style={styles.datePickerButtonLabel}>
             {formatEventTime(form.endTime)}
           </Text>
