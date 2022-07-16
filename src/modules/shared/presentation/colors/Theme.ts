@@ -13,9 +13,17 @@ export const LIGHT_THEME = createTheme({
   },
   spacing: {},
   textVariants: {
-    header: {},
-    subheader: {},
+    h1: {
+      fontSize: 21,
+    },
+    h2: {
+      fontSize: 17,
+    },
+    h3: {
+      fontSize: 14,
+    },
     body: {},
+    caption1: {},
   },
 });
 
