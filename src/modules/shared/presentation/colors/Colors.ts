@@ -4,6 +4,10 @@ export enum Colors {
   LIGHT_GRAY = '#ACACAC',
   WHITE = '#FFFFFF',
   BLUE = '#0A80FF',
+  YELLOW = '#FFF710',
+  RED = '#FF463C',
+  PURPLE = '#6303FF',
+  GREEN = '#168800',
 }
 
 export const ColorsMap = {
@@ -12,4 +16,8 @@ export const ColorsMap = {
   [Colors.LIGHT_GRAY]: Colors.LIGHT_GRAY,
   [Colors.WHITE]: Colors.WHITE,
   [Colors.BLUE]: Colors.BLUE,
+  [Colors.YELLOW]: Colors.YELLOW,
+  [Colors.RED]: Colors.RED,
+  [Colors.PURPLE]: Colors.PURPLE,
+  [Colors.GREEN]: Colors.GREEN,
 };
