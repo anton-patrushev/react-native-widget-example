@@ -41,13 +41,13 @@ function useCreateEventHeader(createEvent: () => void, loading: boolean) {
 
 interface ICreateEventScreenProps {}
 
-// TODO: 1) Implement Color picker
 export const CreateEventScreen: React.FC<ICreateEventScreenProps> = () => {
   const {
     form,
     produceChangeFormField,
     inProgress,
     createEvent,
+    openColorPicker,
     openStartDateTimePicker,
     openEndDateTimePicker,
   } = useCreateEventScreen();
@@ -91,6 +91,7 @@ export const CreateEventScreen: React.FC<ICreateEventScreenProps> = () => {
           {CreateEventDictionary.COLOR_INPUT_LABEL}
         </Text>
         <TouchableOpacity
+          onPress={openColorPicker}
           style={[styles.colorPickerButton, { backgroundColor: form.color }]}
         />
       </View>

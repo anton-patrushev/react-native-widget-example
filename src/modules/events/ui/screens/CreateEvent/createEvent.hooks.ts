@@ -66,6 +66,7 @@ type UseCreateEventScreenResult = {
     field: T,
   ): (fieldValue: CreateEventForm[T]) => void;
 
+  openColorPicker(): void;
   openStartDateTimePicker(): void;
   openEndDateTimePicker(): void;
 };
@@ -102,6 +103,16 @@ export function useCreateEventScreen(): UseCreateEventScreenResult {
     }
   };
 
+  const openColorPicker = () => {
+    navigation.push(SharedRouterScreens.COLOR_PICKER, {
+      initialColor: form.color,
+      submitColor: (color) => {
+        if (!color) return;
+        changeFormField('color', color);
+      },
+    });
+  };
+
   const openStartDateTimePicker = () => {
     navigation.push(SharedRouterScreens.SELECT_DATE_TIME, {
       initialDate: form.startTime,
@@ -130,6 +141,7 @@ export function useCreateEventScreen(): UseCreateEventScreenResult {
     produceChangeFormField: (field) => {
       return (value) => changeFormField(field, value);
     },
+    openColorPicker,
     openStartDateTimePicker,
     openEndDateTimePicker,
   };
