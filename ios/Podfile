@@ -13,6 +13,7 @@ target 'WidgetExample' do
   flags = get_default_flags()
 
   flags[:hermes_enabled] = true
+  flags[:fabric_enabled] = true
 
   use_react_native!(
     :path => config[:reactNativePath],
