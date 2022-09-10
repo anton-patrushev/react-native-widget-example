@@ -29,11 +29,6 @@ target 'WidgetExample' do
   pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi', :modular_headers => true
   pod 'simdjson', path: '../node_modules/@nozbe/simdjson'
 
-  target 'WidgetExampleTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
   post_install do |installer|
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
