@@ -1,5 +1,7 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// TODO: disable due to Fabric is not correctly supported (navigation simply not working)
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { AppNavigationStateContextHooks } from 'modules/app/ui/contexts/AppNavigationState';
 import { SignInScreen } from 'modules/auth/ui/screens/SignIn/SignIn';
@@ -11,7 +13,7 @@ import { EmptyComponent } from 'modules/shared/ui/components/EmptyComponent/Empt
 import { AppRouterParamsList } from './appRouter.types';
 import { AppRouterScreens } from './appRouter.screens';
 
-const AppRouterStack = createNativeStackNavigator<AppRouterParamsList>();
+const AppRouterStack = createStackNavigator<AppRouterParamsList>();
 
 export const AppRouter = () => {
   const isAuthenticated = AppNavigationStateContextHooks.useIsAuthenticated();
