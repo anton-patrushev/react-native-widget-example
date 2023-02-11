@@ -43,6 +43,10 @@ target 'WidgetExample' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  # WatermelonDB Pods
+  pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi', :modular_headers => true
+  pod 'simdjson', path: '../node_modules/@nozbe/simdjson'
+
   target 'WidgetExampleTests' do
     inherit! :complete
     # Pods for testing
