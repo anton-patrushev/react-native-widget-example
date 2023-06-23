@@ -17,7 +17,7 @@ prepare_react_native_project!
 #   dependencies: {
 #     ...(process.env.NO_FLIPPER ? { 'react-native-flipper': { platforms: { ios: null } } } : {}),
 # ```
-flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled
+flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled(["Debug"], { 'Flipper' => '0.201.0' })
 
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
@@ -30,6 +30,9 @@ target 'widgetexample' do
 
   # Flags change depending on the env values.
   flags = get_default_flags()
+
+  flags[:fabric_enabled] = true
+  flags[:hermes_enabled] = true
 
   use_react_native!(
     :path => config[:reactNativePath],

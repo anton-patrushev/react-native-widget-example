@@ -9,7 +9,7 @@
     "start": "react-native start",
     "test": "jest",
     "install:deps": "yarn && bundle install && yarn install:ios",
-    "install:ios": "bundle exec pod install --repo-update --project-directory=ios"
+    "install:ios": "cd ios && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install --repo-update; cd .."
   },
   "dependencies": {
     "react": "18.2.0",
