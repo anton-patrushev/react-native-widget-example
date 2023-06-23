@@ -1,1 +1,0 @@
-export const ONE_HOUR_MILLISECONDS = 3600000; // 60 * 60 * 1000
