@@ -1,5 +1,7 @@
 import React from 'react';
-import { ActivityIndicator, Button, Text, TextInput, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
+
+import { AsyncButton } from 'modules/shared/ui/components/buttons';
 
 import styles from './signIn.styles';
 import { useSignIn } from './signIn.hooks';
@@ -8,7 +10,6 @@ interface ISignInScreenProps {}
 
 export const SignInScreen: React.FC<ISignInScreenProps> = () => {
   const {
-    loading,
     login,
     password,
     isSubmitEnabled,
@@ -38,11 +39,13 @@ export const SignInScreen: React.FC<ISignInScreenProps> = () => {
         textContentType="password"
         secureTextEntry
       />
-      {loading ? (
-        <ActivityIndicator />
-      ) : (
-        <Button title="Sign In" onPress={submit} disabled={!isSubmitEnabled} />
-      )}
+
+      <AsyncButton
+        style={styles.signIn}
+        label="Sign In"
+        onPress={submit}
+        disabled={!isSubmitEnabled}
+      />
     </View>
   );
 };

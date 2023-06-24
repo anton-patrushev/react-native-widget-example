@@ -24,4 +24,8 @@ export default StyleSheet.create({
   inputLabel: {
     marginLeft: 20,
   },
+  signIn: {
+    alignSelf: 'center',
+    width: 100,
+  },
 });

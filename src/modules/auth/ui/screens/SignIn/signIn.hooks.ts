@@ -5,14 +5,14 @@ import { AppNavigationStateContextHooks } from 'modules/app/ui/contexts/AppNavig
 import { useInjection } from 'modules/shared/ioc/context/useInjection';
 import { ILoginUseCase } from 'modules/auth/domain/useCases/LoginUseCase/ILoginUseCase';
 import { AuthModuleSymbols } from 'modules/auth/ioc/symbols';
+import { delay } from 'modules/shared/common/utils/delay';
 
 type UseSignInResult = {
-  loading: boolean;
   login: string;
-  changeLogin(input: string): void;
+  changeLogin: (input: string) => void;
   password: string;
-  changePassword(input: string): void;
-  submit(): void;
+  changePassword: (input: string) => void;
+  submit: () => Promise<void>;
   isSubmitEnabled: boolean;
 };
 
@@ -21,7 +21,6 @@ export function useSignIn(): UseSignInResult {
 
   const [login, setLogin] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
 
   const changeLogin = (input: string) => setLogin(input);
   const changePassword = (input: string) => setPassword(input);
@@ -31,21 +30,20 @@ export function useSignIn(): UseSignInResult {
   );
 
   const submit = async () => {
-    setLoading(true);
     try {
       await loginUseCase.execute({ username: login, password });
-      setTimeout(signIn, 500); // to avoid async update while unmounting component
+
+      await delay(500);
+
+      signIn();
     } catch (e) {
       if (e instanceof Error) {
         Alert.alert('Authentication failed', e.message);
       }
-    } finally {
-      setLoading(false);
     }
   };
 
   return {
-    loading,
     login,
     password,
     changeLogin,

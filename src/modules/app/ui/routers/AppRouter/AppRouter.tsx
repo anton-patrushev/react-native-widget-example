@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AppNavigationStateContextHooks } from 'modules/app/ui/contexts/AppNavigationState';
-import { SignInScreen } from 'modules/auth/ui/screens/SignIn/SignIn';
+import { SignInScreen } from 'modules/auth/ui/screens/SignIn/SignIn.screen';
 import { SplashScreen } from 'modules/app/ui/screens/Splash/Splash';
 import { MainRouter } from 'modules/app/ui/routers/MainRouter/MainRouter';
 
