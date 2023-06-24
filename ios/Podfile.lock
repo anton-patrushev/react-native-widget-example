@@ -3,6 +3,13 @@ PODS:
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.72.0)
+  - FBReactNativeSpec (0.72.0):
+    - RCT-Folly (= 2021.07.22.00)
+    - RCTRequired (= 0.72.0)
+    - RCTTypeSafety (= 0.72.0)
+    - React-Core (= 0.72.0)
+    - React-jsi (= 0.72.0)
+    - ReactCommon/turbomodule/core (= 0.72.0)
   - Flipper (0.201.0):
     - Flipper-Folly (~> 2.6)
   - Flipper-Boost-iOSX (1.76.0.1.11)
@@ -109,6 +116,7 @@ PODS:
   - React-callinvoker (0.72.0)
   - React-Codegen (0.72.0):
     - DoubleConversion
+    - FBReactNativeSpec
     - glog
     - hermes-engine
     - RCT-Folly
@@ -121,6 +129,7 @@ PODS:
     - React-jsi
     - React-jsiexecutor
     - React-NativeModulesApple
+    - React-rncore
     - React-utils
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
@@ -929,6 +938,18 @@ PODS:
   - React-jsinspector (0.72.0)
   - React-logger (0.72.0):
     - glog
+  - react-native-date-picker (4.2.13):
+    - React-Core
+  - react-native-flipper (0.201.0):
+    - React-Core
+  - react-native-safe-area-context (4.6.3):
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - ReactCommon/turbomodule/core
+  - react-native-sensitive-info (6.0.0-alpha.9):
+    - React-Core
   - React-NativeModulesApple (0.72.0):
     - hermes-engine
     - React-callinvoker
@@ -954,15 +975,11 @@ PODS:
     - RCTTypeSafety
     - React-Core
     - React-CoreModules
-    - React-debug
-    - React-graphics
     - React-hermes
     - React-NativeModulesApple
-    - React-RCTFabric
     - React-RCTImage
     - React-RCTNetwork
     - React-runtimescheduler
-    - React-utils
     - ReactCommon/turbomodule/core
   - React-RCTBlob (0.72.0):
     - hermes-engine
@@ -1055,13 +1072,21 @@ PODS:
     - React-jsi (= 0.72.0)
     - React-logger (= 0.72.0)
     - React-perflogger (= 0.72.0)
+  - RNScreens (3.22.0):
+    - React-Core
+    - React-RCTImage
+  - simdjson (3.1.0-wmelon1)
   - SocketRocket (0.6.0)
+  - WatermelonDB (0.26.0):
+    - React
+    - simdjson
   - Yoga (1.14.0)
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
+  - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - Flipper (= 0.201.0)
   - Flipper-Boost-iOSX (= 1.76.0.1.11)
   - Flipper-DoubleConversion (= 3.2.0.1)
@@ -1107,6 +1132,10 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-date-picker (from `../node_modules/react-native-date-picker`)
+  - react-native-flipper (from `../node_modules/react-native-flipper`)
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-sensitive-info (from `../node_modules/react-native-sensitive-info`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -1125,6 +1154,9 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNScreens (from `../node_modules/react-native-screens`)
+  - "simdjson (from `../node_modules/@nozbe/simdjson`)"
+  - "WatermelonDB (from `../node_modules/@nozbe/watermelondb`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1150,6 +1182,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
+  FBReactNativeSpec:
+    :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   hermes-engine:
@@ -1191,6 +1225,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-date-picker:
+    :path: "../node_modules/react-native-date-picker"
+  react-native-flipper:
+    :path: "../node_modules/react-native-flipper"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
+  react-native-sensitive-info:
+    :path: "../node_modules/react-native-sensitive-info"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -1227,6 +1269,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
+  simdjson:
+    :path: "../node_modules/@nozbe/simdjson"
+  WatermelonDB:
+    :path: "../node_modules/@nozbe/watermelondb"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1235,6 +1283,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: bb17efca94c43508cbe54fb0a35e36df30da5213
+  FBReactNativeSpec: 6e7e74b1ed7f0a1a469a82a67521b33285f5fef3
   Flipper: c7a0093234c4bdd456e363f2f19b2e4b27652d44
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 2dc99b02f658daf147069aad9dbd29d8feb06d30
@@ -1253,7 +1302,7 @@ SPEC CHECKSUMS:
   RCTTypeSafety: 82bd23b63f043d1a6b8e80e72fd15c08e04528a4
   React: 4f2c0b59d1a1c0ae02771deb69e5ee78999fee79
   React-callinvoker: d5aa9fa6cd6b67d6033de2cb5af6de7ae3dac6ca
-  React-Codegen: 94b6dff61916095dd90b3f536743a404765767f1
+  React-Codegen: e8116c27e1ea13df55e693a107f50ff7740a05ec
   React-Core: 668dad9409152ff684f52bcb125133b8fec4c941
   React-CoreModules: b02ca7a4fb869bcbe4c0ed2c939d433f13a120c5
   React-cxxreact: 2882426515cd264fac5b8a5501d2b1e8ba127544
@@ -1266,11 +1315,15 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 990287d74aedc4fdd08ebd80736b1a5c71b54da2
   React-jsinspector: 8d754fc957255a29d93e52fc67a895045cdc8703
   React-logger: 454ffb01980778a43b0153ee98721d0275b56616
+  react-native-date-picker: 04e866ba4e7857f83abd504ad42e787f0f02ae00
+  react-native-flipper: 18d15fc2a82b4bb3270b6dd8100d99a8c32cb3b1
+  react-native-safe-area-context: 36cc67648134e89465663b8172336a19eeda493d
+  react-native-sensitive-info: d44e909d065f9c0e15734245e5dd6a24b82e3dcd
   React-NativeModulesApple: 038cd625999ff352fc13d11fd335ea7509794599
   React-perflogger: 684a11499a0589cc42135d6d5cc04d0e4e0e261a
   React-RCTActionSheet: 00b0a4c382a13b834124fa3f541a7d8d1d56efb9
   React-RCTAnimation: 10c24c66fb504f2faa53f4ec0666c4568255cff9
-  React-RCTAppDelegate: 2d7f2c6e0575e3a097a7544b970a63e2113a1dbc
+  React-RCTAppDelegate: ba51460896227d9fb530298746eb543d38face7a
   React-RCTBlob: 10814291c4e8ef09fd2ceca81825eae29ee5a4ec
   React-RCTFabric: 3d9f20d934764b479bcb760c8bcd926b87e6f42c
   React-RCTImage: 2f609dd1c80c4aec8edf2ca235cba476fdd442ec
@@ -1279,14 +1332,17 @@ SPEC CHECKSUMS:
   React-RCTSettings: 9a1f3f5f3e104c0617d953acc54e60e4bfaf11bd
   React-RCTText: f5b4c03708c0283699c0dc23c7fb9f97ce7ac6bd
   React-RCTVibration: fb4135690f091ac9bcfbeb8dc4388208ca0e18b1
-  React-rncore: affc793e47d77df810cf5d242d6bdc3b8ea38082
+  React-rncore: 91a21f0b3c16a5e011bc54d1e204bd6c5bfdf8e2
   React-runtimeexecutor: 56b9f7665138fe8cda0d6c210cf95ee3f625c237
   React-runtimescheduler: 24614bcd31643eacb06c78c0b9101b453d6aac47
   React-utils: c12d2e75c8bbc727939ddc4319ed95493395ed5a
   ReactCommon: 517b45ed311ba9146aa8b55a8ef6617425f7448e
+  RNScreens: 68fd1060f57dd1023880bf4c05d74784b5392789
+  simdjson: e6bfae9ce4bcdc80452d388d593816f1ca2106f3
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  WatermelonDB: cd71a1085182aca9e5d2164b7af9ef2a3aaca571
   Yoga: 1d6727ed193122f6adaf435c3de1a768326ff83b
 
-PODFILE CHECKSUM: 8c27fb2c9c3c79602480b544bed9570c672e97d2
+PODFILE CHECKSUM: 8fff75022522a459b082d46891825925cbf0dbc9
 
 COCOAPODS: 1.12.1
