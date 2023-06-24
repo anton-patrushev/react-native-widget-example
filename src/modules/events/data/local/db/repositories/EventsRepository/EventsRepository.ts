@@ -1,23 +1,19 @@
-import { IEventsRepository } from 'modules/events/data/local/db/repositories/EventsRepository/IEventsRepository';
+import { map, Observable } from 'rxjs';
 import { inject, injectable } from 'inversify';
+
+import { IEventsRepository } from 'modules/events/data/local/db/repositories/EventsRepository/IEventsRepository';
 import { CreateEventInput } from 'modules/events/data/local/db/repositories/EventsRepository/inputs/CreateEventInput';
 import { IWatermelonClient } from 'modules/app/data/local/db/common/client/IWatermelonClient';
 import { AppModuleSymbols } from 'modules/app/ioc/symbols';
 import { EVENTS_TABLE_NAME } from 'modules/events/data/local/db/schemas/EventsSchema';
 import { Event } from 'modules/events/data/local/db/models/Event';
 import { Event as EventDomain } from 'modules/events/domain/models/Event';
-import { map, Observable } from 'rxjs';
-import { SharedModuleSymbols } from 'modules/shared/ioc/symbols';
-import { IMapper } from 'modules/shared/common/mappings/IMapper';
-import { LocalDataMappingSignatures } from 'modules/events/data/local/db/mappings/signatures';
+import { EventLocalDataMapper } from 'modules/events/data/local/db/mappers/EventLocalDataMapper';
 
 @injectable()
 export class EventsRepository implements IEventsRepository {
   @inject(AppModuleSymbols.WATERMELON_CLIENT)
   private watermelonClient!: IWatermelonClient;
-
-  @inject(SharedModuleSymbols.DATA_MAPPER)
-  private dataMapper!: IMapper;
 
   createEvent = async (input: CreateEventInput): Promise<void> => {
     const eventsTable =
@@ -42,12 +38,7 @@ export class EventsRepository implements IEventsRepository {
       .query()
       .observe()
       .pipe(
-        map((events) =>
-          this.dataMapper.mapper.map<Event[], EventDomain[]>(
-            LocalDataMappingSignatures.EVENT_LOCAL_DATA_TO_EVENT_DOMAIN,
-            events,
-          ),
-        ),
+        map((events) => events.map(EventLocalDataMapper.mapFromDBToDomain)),
       );
   };
 
