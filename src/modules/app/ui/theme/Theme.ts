@@ -11,7 +11,15 @@ export const LIGHT_THEME = createTheme({
 
     blue: Colors.BLUE,
   },
-  spacing: {},
+  spacing: {
+    small: 8,
+    medium: 16,
+    large: 32,
+    none: 0,
+  },
+  borderRadii: {
+    common: 10,
+  },
   textVariants: {
     h1: {
       fontSize: 21,
@@ -24,6 +32,7 @@ export const LIGHT_THEME = createTheme({
     },
     body: {},
     caption1: {},
+    defaults: {},
   },
 });
 

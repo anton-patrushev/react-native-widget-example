@@ -1,10 +1,14 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "baseUrl": "./src",
     "paths": {
       "*": ["*"]
-    }
-  }
+    },
+    "types": ["reflect-metadata", "jest"],
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

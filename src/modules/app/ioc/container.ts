@@ -3,7 +3,7 @@ import { Container } from 'inversify';
 import { AuthModule } from 'modules/auth/ioc';
 import { EventsModule } from 'modules/events/ioc';
 import { SharedModule } from 'modules/shared/ioc';
-import { AppModule } from 'modules/app/ioc';
+import { AppModule } from 'modules/app/ioc/index';
 
 interface IDIContainer {
   container: Container;

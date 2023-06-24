@@ -29,7 +29,7 @@ export function useSplash(): UseSplashResult {
       .catch(() => {
         setTimeout(() => {
           signOut();
-          navigation.replace(AppRouterScreens.SIGN_IN);
+          navigation.push(AppRouterScreens.SIGN_IN);
         }, 1000);
       });
   });
