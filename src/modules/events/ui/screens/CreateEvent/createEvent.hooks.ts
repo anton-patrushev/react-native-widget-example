@@ -1,66 +1,17 @@
-import { Color } from 'modules/shared/presentation/types/Color';
-import React from 'react';
-import { Colors } from 'modules/shared/presentation/colors/Colors';
-import { ONE_HOUR_MILLISECONDS } from 'modules/events/ui/screens/CreateEvent/createEvent.consts';
+import * as React from 'react';
+import { useNavigation } from '@react-navigation/native';
+
 import { useCreateEventPresenter } from 'modules/events/presentation/presenters/CreateEventPresenter/CreateEventPresenter';
 import { CreateEventInput } from 'modules/events/presentation/inputs/CreateEventInput';
-import { useNavigation } from '@react-navigation/native';
-import { CreateEventNavigationProp } from 'modules/app/ui/routers/SharedRouter/sharedRouter.types';
-import {
-  addOneHour,
-  isBeforeForMoreThanOneHour,
-  showErrorAlert,
-} from 'modules/events/ui/screens/CreateEvent/createEvent.utils';
-import { SharedRouterScreens } from 'modules/app/ui/routers/SharedRouter/sharedRouter.screens';
-
-type CreateEventForm = {
-  title: string;
-  description: string;
-  color: Color;
-  startTime: Date;
-  endTime: Date;
-};
-
-type UseCreateEventFormResult = {
-  form: CreateEventForm;
-  changeFormField<T extends keyof CreateEventForm>(
-    field: T,
-    fieldValue: CreateEventForm[T],
-  ): void;
-};
-
-type FieldValueHandlersMap = {
-  [Field in keyof CreateEventForm]: (value: CreateEventForm[Field]) => void;
-};
-
-function useCreateEventForm(): UseCreateEventFormResult {
-  const [title, setTitle] = React.useState('');
-  const [description, setDescription] = React.useState('');
-  const [color, setColor] = React.useState<Color>(Colors.BLUE);
-  const [startTime, setStartTime] = React.useState(new Date());
-  const [endTime, setEndTime] = React.useState(
-    new Date(Date.now() + ONE_HOUR_MILLISECONDS),
-  );
-
-  const fieldValueHandlersMap: FieldValueHandlersMap = {
-    title: setTitle,
-    description: setDescription,
-    color: setColor,
-    startTime: setStartTime,
-    endTime: setEndTime,
-  };
-
-  return {
-    form: { title, description, color, startTime, endTime },
-    changeFormField: (field, value) => {
-      fieldValueHandlersMap[field](value);
-    },
-  };
-}
+import { showErrorAlert } from 'modules/events/ui/screens/CreateEvent/createEvent.utils';
+import { useCreateEventFormContext } from 'modules/events/ui/contexts/CreateEventForm/hooks/useCreateEventFormContext';
+import { CreateEventForm } from 'modules/events/ui/contexts/CreateEventForm/createEventContext.types';
+import { CreateEventNavigationProp } from 'modules/events/ui/routers/CreateEventRouter/CreateEventRouter.types';
+import { CreateEventRouterScreens } from 'modules/events/ui/routers/CreateEventRouter/CreateEventRouter.screens';
 
 type UseCreateEventScreenResult = {
   inProgress: boolean;
-  form: UseCreateEventFormResult['form'];
+  form: CreateEventForm;
   createEvent(): void;
   produceChangeFormField<T extends keyof CreateEventForm>(
     field: T,
@@ -73,7 +24,7 @@ type UseCreateEventScreenResult = {
 
 export function useCreateEventScreen(): UseCreateEventScreenResult {
   const createEventPresenter = useCreateEventPresenter();
-  const { form, changeFormField } = useCreateEventForm();
+  const { form, changeFormField } = useCreateEventFormContext();
   const [creating, setCreating] = React.useState(false);
 
   const navigation = useNavigation<CreateEventNavigationProp>();
@@ -104,34 +55,15 @@ export function useCreateEventScreen(): UseCreateEventScreenResult {
   };
 
   const openColorPicker = () => {
-    navigation.push(SharedRouterScreens.COLOR_PICKER, {
-      initialColor: form.color,
-      submitColor: (color) => {
-        if (!color) return;
-        changeFormField('color', color);
-      },
-    });
+    navigation.push(CreateEventRouterScreens.SELECT_COLOR);
   };
 
   const openStartDateTimePicker = () => {
-    navigation.push(SharedRouterScreens.SELECT_DATE_TIME, {
-      initialDate: form.startTime,
-      submitDate: (value) => {
-        changeFormField('startTime', value);
-
-        if (!isBeforeForMoreThanOneHour(value, form.endTime)) {
-          changeFormField('endTime', addOneHour(value));
-        }
-      },
-    });
+    navigation.push(CreateEventRouterScreens.SELECT_START_DATE_TIME);
   };
 
   const openEndDateTimePicker = () => {
-    navigation.push(SharedRouterScreens.SELECT_DATE_TIME, {
-      initialDate: form.endTime,
-      submitDate: (value) => changeFormField('endTime', value),
-      minimumDate: addOneHour(form.startTime),
-    });
+    navigation.push(CreateEventRouterScreens.SELECT_END_DATE_TIME);
   };
 
   return {

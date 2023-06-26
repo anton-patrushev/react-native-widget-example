@@ -10,13 +10,13 @@ import {
 import styles from './createEvent.styles';
 import { useCreateEventScreen } from 'modules/events/ui/screens/CreateEvent/createEvent.hooks';
 import { useNavigation } from '@react-navigation/native';
-import { CreateEventNavigationProp } from 'modules/app/ui/routers/SharedRouter/sharedRouter.types';
+import { CreateEventStackNavigationProp } from 'modules/app/ui/routers/SharedRouter/sharedRouter.types';
 import { CreateEventDictionary } from 'modules/events/ui/screens/CreateEvent/createEvent.dictionary';
 import { Colors } from 'modules/shared/presentation/colors/Colors';
 import { formatEventTime } from 'modules/events/ui/screens/CreateEvent/createEvent.utils';
 
 function useCreateEventHeader(createEvent: () => void, loading: boolean) {
-  const navigation = useNavigation<CreateEventNavigationProp>();
+  const navigation = useNavigation<CreateEventStackNavigationProp>();
 
   React.useEffect(() => {
     navigation.setOptions({

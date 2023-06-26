@@ -12,6 +12,7 @@ import { MainRouterScreens } from './mainRouter.screens';
 import { EmptyComponent } from 'modules/shared/ui/components/EmptyComponent/EmptyComponent';
 
 const MainRouterStack = createNativeStackNavigator<MainRouterParamsList>();
+
 export const MainRouter = () => {
   return (
     <MainRouterStack.Navigator initialRouteName={MainRouterScreens.BOTTOM_TAB}>

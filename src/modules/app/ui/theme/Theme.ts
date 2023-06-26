@@ -6,6 +6,7 @@ export const LIGHT_THEME = createTheme({
   colors: {
     mainBackground: Colors.LIGHT_GRAY,
     mainForeground: Colors.WHITE,
+    secondaryBackground: Colors.DIMMED_WHITE,
 
     mainText: Colors.BLACK,
 
@@ -44,6 +45,8 @@ export const DARK_THEME: Theme = createTheme({
     ...LIGHT_THEME.colors,
     mainBackground: Colors.BLACK,
     mainForeground: Colors.GRAY,
+
+    secondaryBackground: Colors.BLEACHED_BLACK,
 
     mainText: Colors.WHITE,
   },

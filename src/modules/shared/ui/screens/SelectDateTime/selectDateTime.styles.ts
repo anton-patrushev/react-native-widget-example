@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { Colors } from 'modules/shared/presentation/colors/Colors';
 
-export default StyleSheet.create({
+export const SelectDateTimeStyle = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'flex-start',

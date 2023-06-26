@@ -12,7 +12,7 @@ import { Colors } from 'modules/shared/presentation/colors/Colors';
 import { useAsyncButton } from './hooks/useAsyncButton';
 import { AsyncButtonStyle } from './AsyncButton.style';
 
-interface AsyncButtonProps extends WithOptionalChildProps {
+interface IAsyncButtonProps extends WithOptionalChildProps {
   label?: string;
   style?: StyleProp<ViewStyle>;
   onPress?: () => Promise<void>;
@@ -25,7 +25,7 @@ export const AsyncButton = ({
   style,
   disabled,
   onPress,
-}: AsyncButtonProps) => {
+}: IAsyncButtonProps) => {
   const { processing, handlePress } = useAsyncButton({ onPress });
 
   const renderContent = () => {

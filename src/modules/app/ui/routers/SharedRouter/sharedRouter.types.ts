@@ -7,7 +7,7 @@ import { Colors } from 'modules/shared/presentation/colors/Colors';
 import { SharedRouterScreens } from './sharedRouter.screens';
 
 export type SharedRouterParamsList = {
-  [SharedRouterScreens.CREATE_EVENT]: undefined;
+  [SharedRouterScreens.CREATE_EVENT_STACK]: undefined;
   [SharedRouterScreens.SELECT_DATE_TIME]: {
     minimumDate?: Date;
     initialDate: Date;
@@ -25,9 +25,9 @@ export type SharedRouterScreenNavigation<Screen extends SharedRouterScreens> =
 export type SharedRouterNavigationProp =
   NativeStackNavigationProp<SharedRouterParamsList>;
 
-export type CreateEventNavigationProp = NativeStackNavigationProp<
+export type CreateEventStackNavigationProp = NativeStackNavigationProp<
   SharedRouterParamsList,
-  SharedRouterScreens.CREATE_EVENT
+  SharedRouterScreens.CREATE_EVENT_STACK
 >;
 
 export type SelectDateTimeNavigationProp = NativeStackNavigationProp<
