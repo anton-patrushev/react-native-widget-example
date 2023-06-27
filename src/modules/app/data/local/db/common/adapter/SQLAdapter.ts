@@ -2,9 +2,11 @@ import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
 
 import appSchema from 'modules/app/data/local/db/common/schemas/AppSchema';
 import appSchemaMigrations from 'modules/app/data/local/db/common/migrations/AppSchemaMigrations';
+import { AppGroupModule } from 'modules/shared/common/native/modules/AppGroup';
 
 export const SQLAdapter = new SQLiteAdapter({
   schema: appSchema,
+  dbName: `${AppGroupModule.getAppGroup}default.db`,
   // (You might want to comment it out for development purposes -- see Migrations documentation)
   migrations: appSchemaMigrations,
   jsi: true,
